@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unizulu Chatbot</title>
+    <!-- Correctly reference the CSS file using Flask's url_for -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="background-overlay"></div>
+
+    <div class="chat-container">
+        <header>
+            <h1>Unizulu Chatbot</h1>
+        </header>
+        
+        <div id="chatbox">
+            <div class="bot-message">Hello! How can I assist you today?</div>
+        </div>
+        <textarea id="user-input" placeholder="Type a message..." onkeypress="checkEnter(event)"></textarea>
+        <button onclick="sendMessage()">Send</button>
+    </div>
+
+    <!-- Correctly reference the JS file using Flask's url_for -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
