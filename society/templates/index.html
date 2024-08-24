@@ -10,9 +10,14 @@
     <div class="background-overlay"></div>
 
     <div class="chat-container">
-        <header>
-            <h1>Unizulu Chatbot</h1>
-        </header>
+            <header>
+                <h1>Unizulu Chatbot</h1>
+            <nav>
+                <a href="{{ url_for('index') }}">Home</a>
+                <a href="{{ url_for('about') }}">About Us</a>
+            </nav>
+            </header>
+
         
         <div id="chatbox">
             <div class="bot-message">Hello! How can I assist you today?</div>
