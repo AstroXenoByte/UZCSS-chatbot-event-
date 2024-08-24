@@ -3,18 +3,18 @@ import requests
 
 app = Flask(__name__)
 
-#routes
 # Serve the HTML page
 @app.route('/')
 def index():
     return render_template('index.html')
 
-# Handle AJAX request from frontend
-@app.route('/get_response', methods=['POST'])
+
 @app.route('/about')
 def about():
     return render_template('about.html')
 
+# Handle AJAX request from frontend
+@app.route('/get_response', methods=['POST'])
 def get_response():
     user_message = request.json.get('message')
     
@@ -43,3 +43,4 @@ def get_response():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
