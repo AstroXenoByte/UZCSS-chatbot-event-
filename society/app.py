@@ -3,6 +3,7 @@ import requests
 
 app = Flask(__name__)
 
+#routes
 # Serve the HTML page
 @app.route('/')
 def index():
@@ -10,6 +11,10 @@ def index():
 
 # Handle AJAX request from frontend
 @app.route('/get_response', methods=['POST'])
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
 def get_response():
     user_message = request.json.get('message')
     
