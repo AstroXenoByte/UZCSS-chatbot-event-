@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unizulu Chatbot</title>
-    <!-- Correctly reference the CSS file using Flask's url_for -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
@@ -22,7 +21,45 @@
         <button onclick="sendMessage()">Send</button>
     </div>
 
-    <!-- Correctly reference the JS file using Flask's url_for -->
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script>
+        function sendMessage() {
+            const userInput = document.getElementById('user-input');
+            const message = userInput.value;
+            userInput.value = '';  // Clear the input field
+            
+            // Display the user's message in the chatbox
+            const chatbox = document.getElementById('chatbox');
+            const userMessageElement = document.createElement('div');
+            userMessageElement.classList.add('user-message');
+            userMessageElement.textContent = message;
+            chatbox.appendChild(userMessageElement);
+
+            // Make an AJAX request to the Flask backend
+            fetch('/get_response', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ message: message })
+            })
+            .then(response => response.json())
+            .then(data => {
+                const botMessageElement = document.createElement('div');
+                botMessageElement.classList.add('bot-message');
+                botMessageElement.textContent = data.message;
+                chatbox.appendChild(botMessageElement);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+
+        function checkEnter(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                sendMessage();
+            }
+        }
+    </script>
 </body>
 </html>
