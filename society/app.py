@@ -20,7 +20,7 @@ def get_response():
     
     # Define Brainshop API URL and parameters
     api_url = 'http://api.brainshop.ai/get'
-    api_key = 'WPEmqQkMNSlTntyV'
+    api_key = ''
     bid = '168976'
     
     # You can use a static UID or generate unique ones per user session
